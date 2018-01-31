@@ -5,8 +5,6 @@ from ..models import Review
 from .forms import ReviewForm,UpdateProfile
 from flask_login import login_required
 
-
-
 # Views
 @main.route('/')
 def index():
@@ -66,8 +64,9 @@ def new_review(id):
     title = f'{movie.title} review'
     return render_template('new_review.html',title = title, review_form=form, movie=movie)
 
-@main.route('/user/<uname>')
-def profile(uname):
+@main.route('/user/<uname>/update',methods = ['GET','POST'])
+@login_required
+def update_profile(uname):
     user = User.query.filter_by(username = uname).first()
 
     if user is None:
@@ -84,3 +83,4 @@ def profile(uname):
         return redirect(url_for('.profile',uname=user.username))
 
     return render_template("profile/profile.html", form = form)
+

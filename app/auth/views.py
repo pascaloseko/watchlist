@@ -1,4 +1,4 @@
-from flask import render_template,redirect,url_for,abort
+from flask import render_template,redirect,url_for,abort,request
 from app.models import User
 from .forms import RegistrationForm,LoginForm
 from .. import db 
