@@ -15,6 +15,8 @@ class User(UserMixin,db.Model):
     role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
     password_hash = db.Column(db.String(255))
 
+    photos = db.relationship('PhotoProfile',backref = 'user',lazy = "dynamic")
+
     @property
     def password(self):
         raise AttributeError('You cannot read the password attribute')
@@ -77,3 +79,15 @@ class Review:
                 response.append(review)
 
         return response
+
+class PhotoProfile(db.Model):
+    __tablename__ = 'profile_photos'
+
+    id = db.Column(db.Integer,primary_key = True)
+    pic_path = db.Column(db.String())
+    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+
+# python3.6 manage.py shell
+# python3.6 manage.py db init
+# python3.6 manage.py db migrate -m "Initial Migration"
+# python3.6 manage.py db upgrade
