@@ -17,7 +17,7 @@
     </form>
 
 </div>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <!-- Popular movie section  -->
             <h3> Popular Movies</h3>
@@ -28,8 +28,8 @@
         <div class="row">
             <!-- Upcoming movie  -->
             <h3> Upcoming Movies </h3>
-            <ul>
-                    {{ macro.displayMovieList(upcoming)}}
+            <ul class="list-group">
+                <li class="list-group-item">{{ macro.displayMovieList(upcoming)}}</li>
             </ul>
         </div>
         <div class="row">

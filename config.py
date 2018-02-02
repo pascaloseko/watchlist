@@ -18,6 +18,13 @@ class Config:
     MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
 
+    # simple mde  configurations
+    SIMPLEMDE_JS_IIFE = True
+    SIMPLEMDE_USE_CDN = True
+
+class TestConfig(Config):
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://pasco:2345679@localhost/watchlist_test'
+
 
 class ProdConfig(Config):
     '''
@@ -41,5 +48,6 @@ class DevConfig(Config):
 
 config_options = {
 'development':DevConfig,
-'production':ProdConfig
+'production':ProdConfig,
+'test':TestConfig
 }
